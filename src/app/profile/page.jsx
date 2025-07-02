@@ -11,14 +11,14 @@ const Profile = () => {
     const router = useRouter()
     const [loading, setLoading] = useState(true)
     const [userInfo, setUserInfo] = useState({})
+    const [storedEmail, setStoredEmail] = useState("")
+    const [storedRole, setStoredRole] = useState("")
 
-    const storedEmail = localStorage.getItem("email")
-    const storedRole = localStorage.getItem("role")
     const defaultAvatar = "default-avatar.png"
 
-    const fetchData = async () => {
+    const fetchData = async (email) => {
         try {
-            const response = await UserService.getProfile(storedEmail)
+            const response = await UserService.getProfile(email)
             setUserInfo(response.data)
         } catch (error) {
             console.log(error)
@@ -26,11 +26,18 @@ const Profile = () => {
             setLoading(false)
         }
     }
+
     useEffect(() => {
-        if (storedEmail === "") {
+        const email = localStorage.getItem("email") || ""
+        const role = localStorage.getItem("role") || ""
+
+        setStoredEmail(email)
+        setStoredRole(role)
+
+        if (!email) {
             router.push("/login")
         } else {
-            fetchData()
+            fetchData(email)
         }
     }, [])
 

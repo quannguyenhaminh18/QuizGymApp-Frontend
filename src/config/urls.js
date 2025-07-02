@@ -1,5 +1,5 @@
-export const backendUrl = "http://localhost:8080";
+export const backendUrl = "https://quizgymapp-backend.onrender.com";
 
-export const frontendUrl = "http://localhost:3000";
+export const frontendUrl = "https://quiz-gym-app-frontend.vercel.app";
 
-export const wsUrl = "ws://localhost:8080";
+export const wsUrl = "wss://quizgymapp-backend.onrender.com";
