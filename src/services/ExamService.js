@@ -11,7 +11,8 @@ class ExamService {
 
     static async exist(title) {
         try {
-            return await axiosInstance.get(`/exams/is-exists/${title}`);
+            const encodedTitle = encodeURIComponent(title);
+            return await axiosInstance.get(`/exams/is-exists/${encodedTitle}`);
         } catch (error) {
             throw error;
         }
