@@ -1,6 +1,6 @@
 "use client"
 
-import {forwardRef, useEffect, useRef, useState} from "react"
+import {useEffect, useRef, useState} from "react"
 import {Input} from "../../../../components/ui/input"
 import {Label} from "../../../../components/ui/label"
 import {Card, CardContent, CardHeader, CardTitle} from "../../../../components/ui/card"
@@ -30,7 +30,7 @@ import {
     User,
     Zap,
     Save,
-    Lock, ListPlus, PlusCircle, PlusSquare, LucideSaveAll, SaveAll, SaveAllIcon, ListChecks
+    Lock, Square, CheckSquare
 } from "lucide-react"
 import {Button} from "../../../../components/ui/button"
 import {FaFireAlt} from "react-icons/fa"
@@ -541,14 +541,6 @@ export default function CreateExam({id}) {
         }
     }
 
-    const handlePrevError = () => {
-        if (currentErrorIndex > 0) scrollToError(currentErrorIndex - 1)
-    }
-
-    const handleNextError = (e) => {
-        if (currentErrorIndex < errorRefs.current.length - 1) scrollToError(currentErrorIndex + 1)
-    }
-
     const QuestionCard = ({question, index, showRemove = false, onRemove, onToggleSelect}, ref) => {
         const isExpanded = expandedQuestions.has(question.id)
         const isToggleSelected = selectedQuestion.find((q) => q.id === question.id) !== undefined
@@ -571,11 +563,11 @@ export default function CreateExam({id}) {
                         {!openQuestionsExcel &&
                             <div className="mt-1">
                                 {isAlreadyAdded ? (
-                                    <CheckCircle2 className="h-5 w-5 text-gray-400"/>
+                                    <CheckSquare className="h-5 w-5 text-gray-400" />
                                 ) : isToggleSelected ? (
-                                    <CheckCircle2 className="h-5 w-5 text-teal-600"/>
+                                    <CheckSquare className="h-5 w-5 text-teal-600" />
                                 ) : (
-                                    <Circle className="h-5 w-5 text-gray-400"/>
+                                    <Square className="h-5 w-5 text-gray-400" />
                                 )}
                             </div>
                         }

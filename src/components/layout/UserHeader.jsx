@@ -26,10 +26,7 @@ import {
 } from "../ui/dropdown-menu"
 import {useRouter} from "next/navigation"
 import Image from "next/image"
-import {useEffect, useState} from "react"
-import UserService from "../../services/UserService"
-import {backendUrl} from "../../config/urls";
-import axios from "axios"; // Import UserService
+import {useState} from "react"
 
 export default function UserHeader({searchTerm, setSearchTerm}) {
     const router = useRouter()
@@ -104,7 +101,7 @@ export default function UserHeader({searchTerm, setSearchTerm}) {
                         <Button
                             variant="ghost"
                             className="text-purple-600 border-b-2 border-purple-600 cursor-pointer transition-all duration-200 disabled:cursor-not-allowed"
-                            onClick={() => handleNavigation("home", "/users")}
+                            onClick={() => handleNavigation("home", "/users/dashboard")}
                             disabled={isLoading.home}
                         >
                             {isLoading.home ? (

@@ -15,6 +15,7 @@ import createExamSocket from "../../../../../../config/socketConfig";
 import ProgressBoard from "../../../../../../components/exam/ProgressBoard";
 import RoomRankingPanel from "../../../../../../components/exam/RankingList";
 import { defaultColor } from "../../../../../../util/defaultColors";
+import {backendUrl} from "../../../../../../config/urls";
 
 export default function PlayExamFormOnline() {
     const { code } = useParams();
@@ -44,7 +45,7 @@ export default function PlayExamFormOnline() {
     const timerRef = useRef(null);
 
     const storedEmail = localStorage.getItem("email");
-    const imageBaseUrl = "http://localhost:8080";
+    const imageBaseUrl = backendUrl;
 
     const fetchLatestResult = async () => {
         try {

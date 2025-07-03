@@ -13,6 +13,7 @@ import {
     Upload,
     User, Loader2
 } from "lucide-react"
+import {backendUrl} from "../../../config/urls";
 
 const EditProfile = () => {
     const router = useRouter()
@@ -31,7 +32,7 @@ const EditProfile = () => {
             }
             setUserEmail(storedUserEmail);
             const storedUsername = localStorage.getItem("username") || "";
-            const defaultAvatar = "http://localhost:8080/media/default-avatar.png";
+            const defaultAvatar = localStorage.getItem("avatar");
             setInitialUsername(storedUsername);
             setAvatarPreview(defaultAvatar);
 
@@ -41,7 +42,7 @@ const EditProfile = () => {
                     const username = user.username || storedUsername;
                     const avatar = user.avatar || defaultAvatar;
                     setInitialUsername(username);
-                    setAvatarPreview(`http://localhost:8080${avatar}`);
+                    setAvatarPreview(`${backendUrl}${avatar}`);
                     localStorage.setItem("username", username);
                     localStorage.setItem("avatar", avatar);
                 })

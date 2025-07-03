@@ -12,6 +12,7 @@ import HistoryService from "../../../../../services/HistoryService";
 import {X} from "lucide-react"
 import {Card} from "../../../../../components/ui/card"
 import {defaultColor} from "../../../../../util/defaultColors";
+import {backendUrl} from "../../../../../config/urls";
 
 export default function OfflineExamForm() {
     const {id} = useParams()
@@ -33,7 +34,7 @@ export default function OfflineExamForm() {
     const currentQuestion = questions[questionIndex] || {}
     const isMultipleChoice = currentQuestion?.type?.name === "multiple"
 
-    const imageBaseUrl = "http://localhost:8080";
+    const imageBaseUrl = backendUrl;
 
     useEffect(() => {
         const fetchQuizData = async () => {

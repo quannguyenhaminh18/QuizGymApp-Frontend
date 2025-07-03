@@ -19,6 +19,7 @@ import QuestionService from "../../../services/QuestionService";
 import CategoryService from "../../../services/CategoryService";
 import DeleteButton from "../../../components/alerts-confirms/DeleleButton";
 import {Badge} from "../../../components/ui/badge";
+import {backendUrl} from "../../../config/urls";
 
 const Modal = ({onClose, children}) => {
     return (
@@ -63,7 +64,7 @@ export default function QuestionTable() {
     const [expandedIds, setExpandedIds] = useState([]);
     const questionPerPage = 10;
 
-    const imageBaseUrl = "http://localhost:8080";
+    const imageBaseUrl = backendUrl;
 
     useEffect(() => {
         const id = parseInt(localStorage.getItem("id") || "0");

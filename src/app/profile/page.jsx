@@ -14,8 +14,6 @@ const Profile = () => {
     const [storedEmail, setStoredEmail] = useState("")
     const [storedRole, setStoredRole] = useState("")
 
-    const defaultAvatar = "default-avatar.png"
-
     const fetchData = async (email) => {
         try {
             const response = await UserService.getProfile(email)
@@ -66,7 +64,7 @@ const Profile = () => {
                         {/* Left side - Avatar, Name, and Edit Button */}
                         <div className="flex items-center space-x-6">
                             <img
-                                src={userInfo.avatar || defaultAvatar}
+                                src={userInfo.avatar || localStorage.getItem("avatar")}
                                 alt="Avatar"
                                 className="w-40 h-40 rounded-full object-cover border-4 border-gray-200"
                             />
