@@ -533,14 +533,6 @@ export default function CreateExam({id}) {
         }
     }
 
-    const scrollToError = (index) => {
-        const el = errorRefs.current[index]
-        if (el) {
-            el.scrollIntoView({behavior: "smooth", block: "center"})
-            setCurrentErrorIndex(index)
-        }
-    }
-
     const QuestionCard = ({question, index, showRemove = false, onRemove, onToggleSelect}, ref) => {
         const isExpanded = expandedQuestions.has(question.id)
         const isToggleSelected = selectedQuestion.find((q) => q.id === question.id) !== undefined

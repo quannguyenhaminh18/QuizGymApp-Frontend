@@ -1,4 +1,5 @@
 import {jwtDecode} from "jwt-decode";
+import {backendUrl} from "../config/urls";
 
 export const setLocalStorage = (accessToken, refreshToken) => {
     const decodedAccessToken = jwtDecode(accessToken);
@@ -8,7 +9,7 @@ export const setLocalStorage = (accessToken, refreshToken) => {
     localStorage.setItem("id", decodedAccessToken.id)
     localStorage.setItem("role", decodedAccessToken.role)
     localStorage.setItem("username", decodedAccessToken.username)
-    localStorage.setItem("avatar", decodedAccessToken.avatar ? decodedAccessToken.avatar : "/default-avatar.png")
+    localStorage.setItem("avatar", decodedAccessToken.avatar ? `${backendUrl}${decodedAccessToken.avatar}` : "/default-avatar.png")
     let nextPage;
     if (decodedAccessToken.role === "ADMIN") {
         nextPage = "/admin/dashboard"

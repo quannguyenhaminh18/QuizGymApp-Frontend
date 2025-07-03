@@ -5,6 +5,7 @@ import {useRouter} from "next/navigation"
 import {Edit, Mail, Calendar, ArrowLeft} from "lucide-react"
 import {formatDate} from "../../util/formatDate";
 import UserService from "../../services/UserService";
+import {backendUrl} from "../../config/urls";
 
 
 const Profile = () => {
@@ -64,7 +65,7 @@ const Profile = () => {
                         {/* Left side - Avatar, Name, and Edit Button */}
                         <div className="flex items-center space-x-6">
                             <img
-                                src={userInfo.avatar || localStorage.getItem("avatar")}
+                                src={userInfo.avatar ? `${backendUrl}${userInfo.avatar}` : localStorage.getItem("avatar")}
                                 alt="Avatar"
                                 className="w-40 h-40 rounded-full object-cover border-4 border-gray-200"
                             />
